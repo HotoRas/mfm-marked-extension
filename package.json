@@ -1,0 +1,40 @@
+{
+    "name": "mfm-marked-extension",
+    "author": {
+        "name": "HotoRas",
+        "email": "hotoras03@gmail.com",
+        "url": "https://hotoras.kr"
+    },
+    "private": false,
+    "type": "module",
+    "description": "An MFM (Misskey-Flavored Markup) extension for marked",
+    "scripts": {
+        "build": "npm run tsc"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/HotoRas/mfm-marked-extension.git"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "@microsoft/api-extractor": "^7",
+        "@types/jest": "29.5",
+        "@types/node": "^22",
+        "@typescript-eslint/eslint-plugin": "8",
+        "@typescript-eslint/parser": "8",
+        "eslint": "8",
+        "jest": "29.7.0",
+        "ts-jest": "^29",
+        "ts-node": "10.9.2",
+        "tsd": "0.30",
+        "typescript": "5"
+    },
+    "dependencies": {
+        "@twemoji/parser": "15",
+        "marked": "^15"
+    },
+    "files": [
+        "built",
+        "CHANGELOG.md"
+    ]
+}

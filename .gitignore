@@ -1,0 +1,15 @@
+# npm
+node_modules
+
+# editor
+.vscode
+
+# app dir
+built
+temp
+
+# app coverage
+coverage
+
+# generated
+src/internal/parser.js

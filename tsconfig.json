@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "CommonJS",
+        "declaration": true,
+        "outDir": "./built/",
+        "removeComments": true,
+        "strict": true,
+        "strictFunctionTypes": true,
+        "strictNullChecks": true,
+        "experimentalDecorators": true,
+        "noImplicitReturns": true
+    },
+    "typeRoots": [
+        "node_modules/@types",
+        "src/@types"
+    ],
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "test/**/*"
+    ]
+}
