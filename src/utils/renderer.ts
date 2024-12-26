@@ -1,6 +1,57 @@
-export declare namespace MfmExtension {
-    // https://marked.js.org/using_pro#custom-extensions-example
+import type { TokenizerAndRendererExtension, Token, TokenizerThis } from "marked";
+export const mfmFn: TokenizerAndRendererExtension = {
+    name: 'mfmFn',
+    level: 'block',
+    start(src) { return src.match(/\$\[/)?.index; },
+    tokenizer: (src, tokens) => {
+        const rule = /^\$\[([a-z0-9_]+)(?:.([A-Za-z0-9_=,]+))? ([\S\s]+)\]/i;
+        const match = rule.exec(src);
+        if (match) {
+            let ruby: RegExpExecArray | null | undefined = undefined;
+            if (match[0] === 'ruby') {
+                const ruleRuby = /([\S]+) ([\S])/;
+                ruby = ruleRuby.exec(match[2]);
+            }
+            let style: RegExpExecArray | null | undefined = undefined;
+            if (match[1]) {
+                const ruleFnClass = /([\w]+)(?:=[\w.]+)?(?:,([\w]+)(?:=[\w.]+)?)*/i
+                style = ruleFnClass.exec(match[1]);
+            }
+            const token = {
+                type: 'mfmFn',
+                fullRaw: src,
+                raw: match[2],
+                style: match[0],
+                styleClasses: style as (string[] | null | undefined),
+                rubyBody: ruby?.[0] ?? '',
+                rubyRb: ruby?.[1] ?? '',
+                tokens: [] as Token[],
+            };
+            (this as unknown as TokenizerThis).lexer.inline(token.raw, token.tokens);
+            return token;
+        }
+        return {} as Token;
+    },
+    renderer(token) {
+        //TODO bake token.styleClasses into library
+        const _styleClass = {} as { [index: string]: string | boolean };
+        if (token.styleClass) {
+            for (let i = 0; i++; i < token.styleClass.size) {
+                const parseStyle = /([\w]+)(?:=([\w]+))?/i
+                const parsedStyle = parseStyle.exec(token.styleClass[i]);
+                if (parsedStyle?.[0] == undefined) continue;
+                if (parsedStyle?.[1]) _styleClass[parsedStyle[0]] = parsedStyle[1];
+                else _styleClass[parsedStyle[0]] = true;
+            }
+        }
+        switch (token.style) {
+            //TODO renderer function
+            // TIP: declaritive object 
+            default: return token.fullRaw;
+        }
+    }
 }
+
 
 /*
 $[tada.speed=$1,delay=$2 mfm...] where $1 defaults 5s
