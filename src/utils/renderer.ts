@@ -27,7 +27,7 @@ export const mfmFn: TokenizerAndRendererExtension = {
                 rubyRb: ruby?.[1] ?? '',
                 tokens: [] as Token[],
             };
-            (this as unknown as TokenizerThis).lexer.inline(token.raw, token.tokens);
+            if (!ruby) (this as unknown as TokenizerThis).lexer.inline(token.raw, token.tokens);
             return token;
         }
         return {} as Token;
