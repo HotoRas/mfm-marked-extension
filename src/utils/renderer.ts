@@ -1,4 +1,6 @@
 import type { TokenizerAndRendererExtension, Token, TokenizerThis } from "marked";
+import { mfmFnToken } from "./token";
+
 export const mfmFn: TokenizerAndRendererExtension = {
     name: 'mfmFn',
     level: 'block',
@@ -47,8 +49,30 @@ export const mfmFn: TokenizerAndRendererExtension = {
         switch (token.style) {
             //TODO renderer function
             // TIP: declaritive object 
+            case 'tada': return mfmFnToken.tada(token.raw, _styleClass);
+            case 'jelly': return mfmFnToken.jelly(token.raw, _styleClass);
+            case 'twitch': return mfmFnToken.twitch(token.raw, _styleClass);
+            case 'shake': return mfmFnToken.shake(token.raw, _styleClass);
+            case 'spin': return mfmFnToken.spin(token.raw, _styleClass);
+            case 'jump': return mfmFnToken.jump(token.raw, _styleClass);
+            case 'bounce': return mfmFnToken.bounce(token.raw, _styleClass);
+            case 'rainbow': return mfmFnToken.rainbow(token.raw, _styleClass);
+            case 'flip': return mfmFnToken.flip(token.raw, _styleClass);
+            case 'x2': return mfmFnToken.xN(token.raw, 2);
+            case 'x3': return mfmFnToken.xN(token.raw, 3);
+            case 'x4': return mfmFnToken.xN(token.raw, 4);
+            case 'scale': return mfmFnToken.scale(token.raw, _styleClass);
+            case 'fg': return mfmFnToken.color(token.raw, true, _styleClass);
+            case 'bg': return mfmFnToken.color(token.raw, false, _styleClass);
+            case 'border': return mfmFnToken.border(token.raw, _styleClass);
+            case 'blur': return mfmFnToken.blur(token.raw);
+            case 'rotate': return mfmFnToken.rotate(token.raw, _styleClass);
+            case 'ruby': return mfmFnToken.ruby(token.rubyBody, token.rubyRb);
             default: return token.fullRaw;
         }
+
+        // not executed but
+        return token.fullRaw;
     }
 }
 
@@ -66,7 +90,7 @@ $[twitch.speed=$1,delay=$2 mfm...] where $1 defaults 5s
 $[shake.speed=$1,delay=$2 mfm...] where $1 defaults 5s
 <span style="display: inline-block; animation: $1 $2 infinite mfm-shake;">mfm...</span>
 
-$[shake.speed=$1,delay=$2,$3 mfm...] where $1 defaults 5s and $3 in [alternate, left, x, y]
+$[spin.speed=$1,delay=$2,$3 mfm...] where $1 defaults 5s and $3 in [alternate, left, x, y]
 <span style="display: inline-block; animation: $1 linear $2 infinite $3 mfm-spin;">mfm...</span>
 
 $[jump.speed=$1,delay=$2 mfm...] where $1 defaults 5s
