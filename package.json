@@ -9,7 +9,9 @@
     "type": "module",
     "description": "An MFM (Misskey-Flavored Markup) extension for marked",
     "scripts": {
-        "build": "npm run tsc"
+        "tsc": "tsc --build",
+        "build": "tsc --build && node ./scripts/build.mjs",
+        "clean": "tsc --build --clean"
     },
     "repository": {
         "type": "git",
@@ -27,10 +29,9 @@
         "ts-jest": "^29",
         "ts-node": "10.9.2",
         "tsd": "0.30",
-        "typescript": "5"
+        "typescript": "5.7"
     },
     "dependencies": {
-        "@twemoji/parser": "15",
         "marked": "^15"
     },
     "files": [

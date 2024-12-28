@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "ES6",
+        "target": "ES2016",
         "module": "CommonJS",
         "declaration": true,
         "outDir": "./built/",
@@ -16,7 +16,10 @@
         "src/@types"
     ],
     "include": [
-        "src/**/*"
+        "src/**/*",
+        "package.json",
+        "LICENSE",
+        "README.md"
     ],
     "exclude": [
         "node_modules",
