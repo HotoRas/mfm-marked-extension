@@ -64,7 +64,7 @@ export namespace mfmFnToken {
     }
 
     export function xN(raw: string, times: number): string {
-        return `<span style="display: inline-block; transform: scaleX(${times}); overflow-wrap: anywhere;">${raw}</span>`;
+        return `<span class="mfm-x${times}">${raw}</span>`;
     }
 
     export function scale(raw: string, style?: {[index: string]: string | boolean}): string {

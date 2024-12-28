@@ -35,3 +35,5 @@ export declare namespace mfmFnToken {
 
     export function ruby(rbMain: string, rbRb: string): string;
 }
+
+export {};
