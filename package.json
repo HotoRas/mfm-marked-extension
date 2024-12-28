@@ -8,6 +8,34 @@
     },
     "private": false,
     "type": "module",
+    "main": "./built/index.js",
+    "types": "./built/index.d.ts",
+    "man": "./README.md",
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./built/index.d.ts",
+                "default": "./built/index.js"
+            },
+            "default": {
+                "types": "./built/index.d.ts",
+                "default": "./built/index.js"
+            }
+        },
+        "./package.json": "./package.json"
+    },
+    "keywords": [
+        "markdown",
+        "markup",
+        "html",
+        "mfm"
+    ],
+    "tags": [
+        "markdown",
+        "markup",
+        "html",
+        "mfm"
+    ],
     "description": "An MFM (Misskey-Flavored Markup) extension for marked",
     "scripts": {
         "tsc": "tsc --build",
