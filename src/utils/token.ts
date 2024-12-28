@@ -12,7 +12,7 @@ export namespace mfmFnToken {
         delay = style?.['delay'] && style['delay'] !== true
             ? Number(parseTime(style['delay'])) : undefined;
         
-        return `<span style="display: inline-block; ${additionalOptions} animation: ${speed} ${isLinear ? 'linear' : ''} ${delay} infinite ${additionalAnimationParam} ${_class};">${raw}</span>`;
+        return `<span style="display: inline-block; ${additionalOptions} animation: ${speed}s ${isLinear ? 'linear' : ''} ${delay ? `${delay}s` : ''} infinite ${additionalAnimationParam} ${_class};">${raw}</span>`;
     }
     
     export function tada(raw: string, style?: {[index: string]: string | boolean}): string {

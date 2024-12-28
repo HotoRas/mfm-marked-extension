@@ -1,0 +1,6 @@
+import { marked } from "marked"
+import { beforeEach } from "node:test"
+
+describe('mfm-marked-extension', () => {
+    beforeEach(() => { marked.setOptions(marked.getDefaults())})
+})
